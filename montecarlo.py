@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import re
 from scipy.stats import qmc
 
-st.set_page_config(page_title="Monte Carlo Simulator", layout="wide")
+st.set_page_config(page_title="Quantitative Risk Simulator", layout="wide")
 st.title("Quantitative Risk Simulator")
 
 st.markdown("Created by [Caleb Ginorio González](https://www.linkedin.com/in/caleb-ginorio-gonzález-58b243b4/)")
