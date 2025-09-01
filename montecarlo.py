@@ -74,11 +74,17 @@ with tab1:
             elif dist_type == "Lognormal":
                 median = st.sidebar.number_input(f"Median ({name})", key=f"median_{i}")
                 gsd = st.sidebar.number_input(f"GSD ({name})", min_value=0.01, key=f"gsd_{i}")
-                mu = np.log(median)
-                sigma = np.log(gsd)
-                user_inputs[name] = ("Lognormal", (median, gsd))
-                dist_data = np.random.lognormal(mu, sigma, n_trials)
 
+                if median > 0 and gsd > 0:
+                    mu = np.log(median)
+                    sigma = np.log(gsd)
+                    user_inputs[name] = ("Lognormal", (median, gsd))
+                    dist_data = np.random.lognormal(mu, sigma, n_trials)
+                    preview_plots[name] = px.histogram(dist_data, nbins=30, title=f"{name} Distribution Preview")
+                else:
+                    st.sidebar.warning(f"Enter valid Median and GSD values for {name}")
+                    user_inputs[name] = ("Lognormal", (None, None))
+                                    
             preview_plots[name] = px.histogram(dist_data, nbins=30, title=f"{name} Distribution Preview")
             user_inputs[name] = (dist_type, user_inputs[name][1])  # override to keep consistent
 
