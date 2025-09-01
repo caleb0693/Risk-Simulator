@@ -75,7 +75,7 @@ with tab1:
                 median = st.sidebar.number_input(f"Median ({name})", key=f"median_{i}")
                 gsd = st.sidebar.number_input(f"GSD ({name})", min_value=0.01, key=f"gsd_{i}")
 
-                if median > 0 and gsd > 0:
+                if median > 0 and gsd >= 1:
                     mu = np.log(median)
                     sigma = np.log(gsd)
                     user_inputs[name] = ("Lognormal", (median, gsd))
