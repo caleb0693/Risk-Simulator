@@ -73,7 +73,7 @@ with tab1:
 
             elif dist_type == "Lognormal":
                 median = st.sidebar.number_input(f"Median ({name})", key=f"median_{i}")
-                gsd = st.sidebar.number_input(f"GSD ({name})", min_value=0.01, key=f"gsd_{i}")
+                gsd = st.sidebar.number_input(f"GSD ({name})", min_value=0, key=f"gsd_{i}")
 
                 if median > 0 and gsd >= 1:
                     mu = np.log(median)
